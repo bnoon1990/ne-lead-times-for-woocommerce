@@ -1,0 +1,21 @@
+{
+  "name": "noonelite/ne-lead-times-for-woocommerce",
+  "description": "Adds lead times to products.",
+  "type": "wordpress-plugin",
+  "license": "GPL-2.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "Noonelite\\LeadTimesForWooCommerce\\Admin\\": "admin/",
+      "Noonelite\\LeadTimesForWooCommerce\\Frontend\\": "frontend/",
+      "Noonelite\\LeadTimesForWooCommerce\\Includes\\": "includes/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Ben Noon",
+      "email": "Ben@Nooneliterecruitment.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {}
+}
