@@ -2,6 +2,11 @@
 
 namespace NoonElite\LeadTimesForWooCommerce\Frontend;
 
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class LeadTime
 {
     public function __construct()

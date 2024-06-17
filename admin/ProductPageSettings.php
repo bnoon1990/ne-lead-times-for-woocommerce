@@ -2,6 +2,11 @@
 
 namespace NoonElite\LeadTimesForWooCommerce\Admin;
 
+// Exit if accessed directly
+if (!defined('ABSPATH')) {
+    exit;
+}
+
 class ProductPageSettings
 {
     public function __construct()
