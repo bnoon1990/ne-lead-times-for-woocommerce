@@ -10,6 +10,11 @@
  * Requires Plugins: WooCommerce
  */
 
+require __DIR__ . '/vendor/autoload.php';
+
+use NoonElite\LeadTimesForWooCommerce\Admin\ProductPageSettings;
+use NoonElite\LeadTimesForWooCommerce\Frontend\LeadTime;
+
 // Exit if accessed directly
 if (!defined('ABSPATH')) {
     exit;
@@ -17,6 +22,36 @@ if (!defined('ABSPATH')) {
 
 class BN_Noon_Elite_Lead_Times_For_Woocommerce_Plugin
 {
+    private $productPageSettings;
+    private $leadTime;
+
+    public function __construct()
+    {
+        add_action('plugins_loaded', array($this, 'init'));
+    }
+
+    public function init()
+    {
+        if (!in_array('woocommerce/woocommerce.php', apply_filters('active_plugins', get_option('active_plugins')))) {
+            add_action('admin_notices', array($this, 'woocommerce_not_active_notice'));
+            deactivate_plugins(plugin_basename(__FILE__));
+            return;
+        }
+
+        $this->productPageSettings = new ProductPageSettings();
+        $this->leadTime = new LeadTime();
+
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_scripts'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_public_scripts'));
+        add_action('admin_enqueue_scripts', array($this, 'enqueue_admin_styles'));
+        add_action('wp_enqueue_scripts', array($this, 'enqueue_public_styles'));
+    }
+
+    public function woocommerce_not_active_notice()
+    {
+        echo '<div class="error"><p>' . __('Lead times for WooCommerce requires WooCommerce plugin to be running to work.', 'bn-noon-elite-lead-times-for-woocommerce') . '</p></div>';
+    }
+
     public function enqueue_admin_scripts($hook)
     {
         $screen = get_current_screen();

@@ -5,9 +5,9 @@
   "license": "GPL-2.0-or-later",
   "autoload": {
     "psr-4": {
-      "Noonelite\\LeadTimesForWooCommerce\\Admin\\": "admin/",
-      "Noonelite\\LeadTimesForWooCommerce\\Frontend\\": "frontend/",
-      "Noonelite\\LeadTimesForWooCommerce\\Includes\\": "includes/"
+      "NoonElite\\LeadTimesForWooCommerce\\Admin\\": "admin/",
+      "NoonElite\\LeadTimesForWooCommerce\\Frontend\\": "frontend/",
+      "NoonElite\\LeadTimesForWooCommerce\\Includes\\": "includes/"
     }
   },
   "authors": [
